@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(cpp_pubsub)
+project(cpp-pubsub)
 
 #Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
@@ -15,17 +15,17 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
 #talker에 필요한 것들
-add_executable(talker src/publisher_member_function.cpp)
-ament_target_dependencies(talker rclcpp std_msgs)
+add_executable(cpp-pub src/cpp-pub.cpp)
+ament_target_dependencies(cpp-pub rclcpp std_msgs)
 
 #listener에 필요한 것들
-add_executable(listener src/subscriber_member_function.cpp)
-ament_target_dependencies(listener rclcpp std_msgs)
+add_executable(cpp-sub src/cpp-sub.cpp)
+ament_target_dependencies(cpp-sub rclcpp std_msgs)
 
 #설치
 install(TARGETS
-  talker
-  listener
+  cpp-pub
+  cpp-sub
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
